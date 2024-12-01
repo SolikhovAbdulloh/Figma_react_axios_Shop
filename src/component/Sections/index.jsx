@@ -21,7 +21,8 @@ function Sections() {
             </p>
           </div>
         </div>
-        <div className="grid cursor-pointer fff grid-cols-[repeat(3,4fr)] m-auto   mt-3">
+        <div className="grid cursor-pointer fff grid-cols-[repeat(3,4fr)] m-auto mt-3">
+       
           <div className="flex w-[450px] h-[100px] border-[solid] border-[2px] border-[green] p-3 items-center gap-3">
             <img src={r1} alt="r1" />
             <div className="flex flex-col ">

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { request } from "../../server";
 
-const UseAxios = ({ url, method = "GET", body, params }) => {
+const UseAxios = ({ url, method = "GET", body, params}) => {
   const [data, setdata] = useState([]);
   const [loading, setloading] = useState(true);
   const [error, seterror] = useState(null);
@@ -23,7 +23,7 @@ const UseAxios = ({ url, method = "GET", body, params }) => {
         setloading(false);
       });
   }, []);
-  return { data, loading, setloading };
+  return { data, loading};
 };
 
 export default UseAxios;
