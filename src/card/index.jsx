@@ -1,9 +1,16 @@
 import { Button, Rate } from 'antd';
-import React from 'react'
+import React, { useContext } from 'react'
 import shop from "./Shopping Cart.png"
+import { ShopAppContext } from '../context';
+import NotificationApp from '../context/notification';
+import { FcLike } from "react-icons/fc";
+
 function Card(props){
-   
+
+    const {dispatch} = useContext(ShopAppContext)
     
+    const notify = NotificationApp()
+
     const {name,article,rating,reviews,price_current,price_old,currency,imagie} = props
     
   return (
@@ -28,9 +35,28 @@ function Card(props){
             {price_old}
           </sup>
         </div>
-        <Button>
+        <Button type='dashed'>
+          <FcLike />
+        </Button>
+        <Button
+          onClick={() => {
+            dispatch({
+              type: "add",
+              value: {
+                id: props.id,
+                name: props.name,
+                image: props.imagie,
+                price: props.price_current,
+              },
+            });
+            
+            notify({ type:"add"});
+            
+          }}
+        >
           <img src={shop} alt="ss" />
         </Button>
+        
       </div>
     </div>
   );

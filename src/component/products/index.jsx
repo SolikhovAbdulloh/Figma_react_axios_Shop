@@ -13,21 +13,25 @@ function Products() {
       <section className="w-100% p-2  m-auto">
         <h2 className="font-bold size-[40px]">Автомасла</h2>
         <div className="grid  gap-[30px] grid-cols-4">
-          {data.map((e) => (
-            <Card key={e.id} {...e} />
-          ))}
+          {loading
+            ? Card_pruduct_loader()
+            : data.map((e) => <Card key={e.id} {...e} />)}
         </div>
       </section>
-      <section className="w-80% mt-[30px] m-auto">
+      <section className="w-100% mt-[30px] m-auto">
         <h2 className="font-bold size-[40px]">Рекомендуем</h2>
         <div className="grid gap-[30px] grid-cols-4">
-          {loading ? (
-        
-              Card_pruduct_loader()
-          
-          ) : (
-            data.map((e) => <Card key={e.id} {...e} />)
-          )}
+          {loading
+            ? Card_pruduct_loader()
+            : data.map((e) => <Card key={e.id} {...e} />)}
+        </div>
+      </section>
+      <section className="w-100% mt-[30px] m-auto">
+        <h2 className="font-bold mb-5 size-[40px]">Часто продаваемые</h2>
+        <div className="grid gap-[30px] grid-cols-4">
+          {loading
+            ? Card_pruduct_loader()
+            : data.map((e) => <Card key={e.id} {...e} />)}
         </div>
       </section>
     </div>

@@ -6,8 +6,12 @@ import Search from "antd/es/input/Search";
 import { Button } from "antd";
 import { CiGrid41 } from "react-icons/ci";
 import { RiTelegramLine } from "react-icons/ri";
+import { CiHeart } from "react-icons/ci";
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar() {
+  const navigate = useNavigate()
   return (
     <div className="contiener">
       <header>
@@ -34,26 +38,36 @@ function Navbar() {
             <img src={user} alt="" />
             Вход / Регистрация
           </p>
-          <Button className="flex  items-center gap-2">
+          <Button
+            className="flex items-center gap-2"
+            onClick={() => navigate("saralangan")}
+          >
+            <CiHeart />
+            Избранное
+          </Button>
+          <Button
+            className="flex  items-center gap-2"
+            onClick={() => navigate("/productpage")}
+          >
             <img src={shop} alt="shop" />
             Корзина
           </Button>
         </div>
         <div className="mt-5 flex gap-3">
-          <Button className="flex items-center">
+          <Button className="flex items-center" onClick={() => navigate("/")}>
             <CiGrid41 />
             Все категории
           </Button>
-          <Button>Запчасти для ТО</Button>
-          <Button>Автомасла</Button>
-          <Button>Оригинальные запчасти</Button>
-          <Button>Неоригинальные запчасти</Button>
-          <Button>Лампочки</Button>
-          <Button>Аккумуляторы</Button>
+          <Button onClick={() => navigate("/")}>Запчасти для ТО</Button>
+          <Button onClick={() => navigate("/")}>Автомасла</Button>
+          <Button onClick={() => navigate("/")}>Оригинальные запчасти</Button>
+          <Button onClick={() => navigate("/")}>Неоригинальные запчасти</Button>
+          <Button onClick={() => navigate("/")}>Лампочки</Button>
+          <Button onClick={() => navigate("/")}>Аккумуляторы</Button>
         </div>
       </header>
-      </div>
-  )
+    </div>
+  );
 }
 
 export default Navbar
