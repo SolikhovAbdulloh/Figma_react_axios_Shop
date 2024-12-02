@@ -1,18 +1,26 @@
-import { Button, Rate } from 'antd';
-import React, { useContext } from 'react'
-import shop from "./Shopping Cart.png"
-import { ShopAppContext } from '../context';
-import NotificationApp from '../context/notification';
+import { Button, Rate } from "antd";
+import React, { useContext } from "react";
+import shop from "./Shopping Cart.png";
+import { ShopAppContext } from "../context";
+import NotificationApp from "../context/notification";
 import { FcLike } from "react-icons/fc";
 
-function Card(props){
+function Card(props) {
+  const { dispatch } = useContext(ShopAppContext);
 
-    const {dispatch} = useContext(ShopAppContext)
-    
-    const notify = NotificationApp()
+  const notify = NotificationApp();
 
-    const {name,article,rating,reviews,price_current,price_old,currency,imagie} = props
-    
+  const {
+    name,
+    article,
+    rating,
+    reviews,
+    price_current,
+    price_old,
+    currency,
+    imagie,
+  } = props;
+
   return (
     <div className=" h bg-[#ffffff] p-3  rounded-lg  ">
       <img src={imagie} className="w-[60vh]" alt="cards" />
@@ -35,7 +43,21 @@ function Card(props){
             {price_old}
           </sup>
         </div>
-        <Button type='dashed'>
+        <Button
+          type="dashed"
+          onClick={() => {
+            dispatch({
+              type: "add",
+              value: {
+                id: props.id,
+                name: props.name,
+                image: props.imagie,
+                price: props.price_current,
+              },
+            });
+            notify({ type: "like" });
+          }}
+        >
           <FcLike />
         </Button>
         <Button
@@ -49,20 +71,15 @@ function Card(props){
                 price: props.price_current,
               },
             });
-            
-            notify({ type:"add"});
-            
+
+            notify({ type: "add" });
           }}
         >
           <img src={shop} alt="ss" />
         </Button>
-        
       </div>
     </div>
   );
 }
 
-export default Card
-
-
- 
+export default Card;

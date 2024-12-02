@@ -7,6 +7,9 @@ function ProductPage() {
   const navigate = useNavigate()
   console.log((state.data.length));
   
+    const {dispatch} = useContext(ShopAppContext)
+
+
   return (
     <div>
       {state.data.length === 0 ? (
@@ -38,10 +41,10 @@ function ProductPage() {
               <p>{product.name}</p>
               <p>{product.price}$</p>
               <div className='flex gap-3'>
-                <Button type="primary" danger >
+                <Button type="primary" danger onClick={()=>dispatch({type:'delete',value:{id:product.id}})} >
                   ochirish
                 </Button>
-                <Button type='primary'>
+                <Button onClick={()=>alert('Xaridingiz uchun rahmat')} type='primary'>
                   Sotib olish
                 </Button>
               </div>

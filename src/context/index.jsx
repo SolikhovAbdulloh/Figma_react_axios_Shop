@@ -10,7 +10,6 @@ const Shopcontext = ({ children }) => {
   const reducer = (state, { type, value }) => {
     switch (type) {
       case "add": {
-        // Mahsulot mavjudligini tekshirish
         const exists = state.data.some((item) => item.id === value.id);
 
         if (exists) {
@@ -29,6 +28,14 @@ const Shopcontext = ({ children }) => {
           return { ...state, data: newData };
         }
       }
+      case 'delete':{
+        const filter = state.data.filter((item)=> item.id !== value.id)
+        localStorage.setItem('shop',JSON.stringify(filter))
+        return {...state,data:filter}
+      }
+      
+
+
 
       default:
         return state; // Agar boshqa `type` bo'lsa, avvalgi holatni qaytaradi
