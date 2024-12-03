@@ -1,14 +1,13 @@
-import React, { useContext } from 'react'
-import { ShopAppContext } from '../../context'
-import { Button } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext } from "react";
+import { ShopAppContext } from "../../context";
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 function ProductPage() {
-  const {state} = useContext(ShopAppContext)
-  const navigate = useNavigate()
-  console.log((state.data.length));
-  
-    const {dispatch} = useContext(ShopAppContext)
+  const { state } = useContext(ShopAppContext);
+  const navigate = useNavigate();
+  console.log(state.data.length);
 
+  const { dispatch } = useContext(ShopAppContext);
 
   return (
     <div>
@@ -17,10 +16,9 @@ function ProductPage() {
           <img
             className="w-[20%] m-auto"
             src="https://uzum.uz/static/img/shopocat.490a4a1.png"
-            alt=""
-          />
-          <div className="text-center  ">
-            <p className="font-semibold mb-1 ">Savatingiz hozircha bo‘sh</p>
+            alt="logo"/>
+          <div className="text-center">
+            <p className="font-semibold mb-1">Savatingiz hozircha bo‘sh</p>
             <p>
               Bosh sahifadan boshlang — kerakli tovarni qidiruv orqali
               topishingiz yoki to‘plamlarni ko‘rishingiz mumkin
@@ -40,11 +38,20 @@ function ProductPage() {
               <img src={product.image} alt={product.name} />
               <p>{product.name}</p>
               <p>{product.price}$</p>
-              <div className='flex gap-3'>
-                <Button type="primary" danger onClick={()=>dispatch({type:'delete',value:{id:product.id}})} >
+              <div className="flex gap-3">
+                <Button
+                  type="primary"
+                  danger
+                  onClick={() =>
+                    dispatch({ type: "delete", value: { id: product.id } })
+                  }
+                >
                   ochirish
                 </Button>
-                <Button onClick={()=>alert('Xaridingiz uchun rahmat')} type='primary'>
+                <Button
+                  onClick={() => alert("Xaridingiz uchun rahmat")}
+                  type="primary"
+                >
                   Sotib olish
                 </Button>
               </div>
@@ -56,4 +63,4 @@ function ProductPage() {
   );
 }
 
-export default ProductPage
+export default ProductPage;

@@ -28,7 +28,7 @@ function Navbar() {
           </span>
         </div>
         <div className="flex cursor-pointer justify-between items-center">
-          <img src={logo} alt="logo" />
+          <img src={logo} onClick={()=>navigate('/')} alt="logo" />
           <Search
             type="primary"
             placeholder="Введите номер запчасти или VIN"

@@ -14,7 +14,7 @@ function Saralangan() {
       {state.data.length === 0 ? (
         <div className="m-auto text-center ">
           <img
-            className="w-[15%] m-auto"
+            className="w-[45%] m-auto"
             src="https://uzum.uz/static/img/hearts.cf414be.png"
             alt=""
           />
@@ -27,8 +27,8 @@ function Saralangan() {
       ) : (
         state.data.map((Item) => (
           <div className="flex">
-            <div className="flex flex-col items-center gap-4" key={Item.id}>
-              <img src={Item.image} className="w-[30%]" alt={Item.name} />
+            <div className="flex flex-col  items-center gap-4" key={Item.id}>
+              <img src={Item.image} className="w-[20%]"  alt={Item.name} />
               <em className="text-start  font-semibold">{Item.name}</em>
               <em>{Item.price}So'm</em>
               <Button

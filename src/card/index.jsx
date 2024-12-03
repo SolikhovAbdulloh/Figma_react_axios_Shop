@@ -47,7 +47,7 @@ function Card(props) {
           type="dashed"
           onClick={() => {
             dispatch({
-              type: "add",
+              type: "addded",
               value: {
                 id: props.id,
                 name: props.name,

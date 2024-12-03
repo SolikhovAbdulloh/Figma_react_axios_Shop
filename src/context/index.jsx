@@ -28,17 +28,33 @@ const Shopcontext = ({ children }) => {
           return { ...state, data: newData };
         }
       }
-      case 'delete':{
-        const filter = state.data.filter((item)=> item.id !== value.id)
-        localStorage.setItem('shop',JSON.stringify(filter))
-        return {...state,data:filter}
+
+      case "addded": {
+        const exists = state.data.find((item) => item.id === value.id);
+
+        if (exists) {
+          const updatedData = state.data.map((item) =>
+            item.id === value.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          );
+          localStorage.setItem("shop", JSON.stringify(updatedData));
+          return { ...state, data: updatedData };
+        } else {
+          const newData = [...state.data, { ...value, quantity: 1 }];
+          localStorage.setItem("shop", JSON.stringify(newData));
+          return { ...state, data: newData };
+        }
       }
-      
 
-
+      case "delete": {
+        const filter = state.data.filter((item) => item.id !== value.id);
+        localStorage.setItem("shop", JSON.stringify(filter));
+        return { ...state, data: filter };
+      }
 
       default:
-        return state; // Agar boshqa `type` bo'lsa, avvalgi holatni qaytaradi
+        return state; 
     }
   };
 
