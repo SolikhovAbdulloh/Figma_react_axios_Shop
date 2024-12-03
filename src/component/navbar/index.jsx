@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import logo from "../imges/logo.png";
 import user from "../imges/User,Profile.png"
 import shop from "../imges/Shopping Cart.png";
 import Search from "antd/es/input/Search";
-import { Button } from "antd";
+import { Badge, Button } from "antd";
 import { CiGrid41 } from "react-icons/ci";
 import { RiTelegramLine } from "react-icons/ri";
 import { CiHeart } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
+import { ShopAppContext } from '../../context';
 
 
 function Navbar() {
   const navigate = useNavigate()
+  const {state} = useContext(ShopAppContext)
   return (
     <div className="contiener">
       <header>
@@ -28,7 +30,7 @@ function Navbar() {
           </span>
         </div>
         <div className="flex cursor-pointer justify-between items-center">
-          <img src={logo} onClick={()=>navigate('/')} alt="logo" />
+          <img src={logo} onClick={() => navigate("/")} alt="logo" />
           <Search
             type="primary"
             placeholder="Введите номер запчасти или VIN"
@@ -38,20 +40,20 @@ function Navbar() {
             <img src={user} alt="" />
             Вход / Регистрация
           </p>
-          <Button
+          <Badge  count={state.liked.length}
             className="flex items-center gap-2"
             onClick={() => navigate("saralangan")}
           >
-            <CiHeart />
+            <CiHeart  />
             Избранное
-          </Button>
-          <Button
+          </Badge>
+          <Badge count={state.data.length}
             className="flex  items-center gap-2"
             onClick={() => navigate("/productpage")}
           >
             <img src={shop} alt="shop" />
             Корзина
-          </Button>
+          </Badge>
         </div>
         <div className="mt-5 flex gap-3">
           <Button className="flex items-center" onClick={() => navigate("/")}>

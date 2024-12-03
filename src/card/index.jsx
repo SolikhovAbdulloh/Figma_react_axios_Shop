@@ -23,7 +23,7 @@ function Card(props) {
 
   return (
     <div className=" h bg-[#ffffff] p-3  rounded-lg  ">
-      <img src={imagie} className="w-[60vh]" alt="cards" />
+      <img src={imagie} className="w-[30vh]" alt="cards" />
       <div className="flex items-center mt-3 mb-3 justify-between">
         <p className="text-gray-500">Артикул: {article} </p>
         <div className="flex items-center justify-center gap-1">
@@ -47,7 +47,7 @@ function Card(props) {
           type="dashed"
           onClick={() => {
             dispatch({
-              type: "addded",
+              type: "liked_add",
               value: {
                 id: props.id,
                 name: props.name,
@@ -56,6 +56,7 @@ function Card(props) {
               },
             });
             notify({ type: "like" });
+            
           }}
         >
           <FcLike />
