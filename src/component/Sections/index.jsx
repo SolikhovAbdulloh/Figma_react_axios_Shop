@@ -12,7 +12,7 @@ function Sections() {
         <div className="bg_image  p-4 flex m-auto  flex-col justify-center ">
           <div>
             <h2 className="text-[40px] text-white font-bold ">
-              Оригинальные автомасла <br /> cо скидкой{" "}
+              Оригинальные автомасла <br /> cо скидкой
               <span className="bg-[#fc5c2a] rounded-lg">15%</span>
             </h2>
             <br />
