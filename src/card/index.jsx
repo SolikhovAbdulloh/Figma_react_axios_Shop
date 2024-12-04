@@ -3,12 +3,12 @@ import React, { useContext, useState } from "react";
 import shop from "./Shopping Cart.png";
 import { ShopAppContext } from "../context";
 import NotificationApp from "../context/notification";
-import { HeartOutlined } from '@ant-design/icons';;
+import { HeartOutlined } from "@ant-design/icons";
 import { HeartFilled } from "@ant-design/icons";
 
 function Card(props) {
   const { dispatch } = useContext(ShopAppContext);
-  const {state} = useContext(ShopAppContext)
+  const { state } = useContext(ShopAppContext);
   const notify = NotificationApp();
 
   const {
@@ -23,11 +23,11 @@ function Card(props) {
     imagie,
   } = props;
 
-const Likeporduct = state.liked.filter((item)=> item.id === id)[0];
+  const Likeporduct = state.liked.filter((item) => item.id === id)[0];
 
-const isLiked = Boolean(Likeporduct)
+  const isLiked = Boolean(Likeporduct);
 
-console.log(isLiked);
+  console.log(isLiked);
 
   return (
     <div className=" relative h bg-[#ffffff] p-3  rounded-lg">
@@ -52,7 +52,10 @@ console.log(isLiked);
           </sup>
         </div>
         {isLiked ? (
-          <HeartFilled className="absolute  cursor-pointer text-[25px]  text-[red]   top-5 right-5 " />
+          <HeartFilled
+            className="absolute  cursor-pointer text-[25px]  text-[red]   top-5 right-5 "
+            onClick={() => dispatch({ type: "Deleteliked", value: { id } })}
+          />
         ) : (
           <HeartOutlined
             className="absolute  cursor-pointer text-[25px]  top-5 right-5"

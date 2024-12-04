@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <div className="contiener">
       <header>
-        <div className="flex mb-3 justify-between items-center">
+        <div className="!hidden lg:!flex mb-3 justify-between items-center">
           <p className="flex gap-2 items-center">
             <RiTelegramLine />
             г. Нижний Новгород, Нижегородская обл.
@@ -56,7 +56,7 @@ function Navbar() {
           </Badge>
         </div>
         <div className="mt-5 flex gap-3">
-          <Button className="flex items-center" onClick={() => navigate("/")}>
+          <Button className="flex  items-center" onClick={() => navigate("/")}>
             <CiGrid41 />
             Все категории
           </Button>
