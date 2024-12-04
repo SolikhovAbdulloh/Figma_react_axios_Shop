@@ -1,16 +1,18 @@
 import { Button, Rate } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import shop from "./Shopping Cart.png";
 import { ShopAppContext } from "../context";
 import NotificationApp from "../context/notification";
-import { FcLike } from "react-icons/fc";
+import { HeartOutlined } from '@ant-design/icons';;
+import { HeartFilled } from "@ant-design/icons";
 
 function Card(props) {
   const { dispatch } = useContext(ShopAppContext);
-
+  const {state} = useContext(ShopAppContext)
   const notify = NotificationApp();
 
   const {
+    id,
     name,
     article,
     rating,
@@ -21,8 +23,14 @@ function Card(props) {
     imagie,
   } = props;
 
+const Likeporduct = state.liked.filter((item)=> item.id === id)[0];
+
+const isLiked = Boolean(Likeporduct)
+
+console.log(isLiked);
+
   return (
-    <div className=" h bg-[#ffffff] p-3  rounded-lg  ">
+    <div className=" relative h bg-[#ffffff] p-3  rounded-lg">
       <img src={imagie} className="w-[30vh]" alt="cards" />
       <div className="flex items-center mt-3 mb-3 justify-between">
         <p className="text-gray-500">Артикул: {article} </p>
@@ -43,24 +51,28 @@ function Card(props) {
             {price_old}
           </sup>
         </div>
-        <Button
-          type="dashed"
-          onClick={() => {
-            dispatch({
-              type: "liked_add",
-              value: {
-                id: props.id,
-                name: props.name,
-                image: props.imagie,
-                price: props.price_current,
-              },
-            });
-            notify({ type: "like" });
-            
-          }}
-        >
-          <FcLike />
-        </Button>
+        {isLiked ? (
+          <HeartFilled className="absolute  cursor-pointer text-[25px]  text-[red]   top-5 right-5 " />
+        ) : (
+          <HeartOutlined
+            className="absolute  cursor-pointer text-[25px]  top-5 right-5"
+            onClick={() => {
+              dispatch({
+                type: "liked_add",
+                value: {
+                  id: props.id,
+                  name: props.name,
+                  image: props.imagie,
+                  price: props.price_current,
+                },
+              });
+              notify({ type: "like" });
+            }}
+          >
+            {" "}
+          </HeartOutlined>
+        )}
+
         <Button
           onClick={() => {
             dispatch({

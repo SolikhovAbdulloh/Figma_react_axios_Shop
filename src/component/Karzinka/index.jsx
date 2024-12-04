@@ -48,12 +48,7 @@ function ProductPage() {
                 >
                   ochirish
                 </Button>
-                <Button
-                  onClick={() => alert("Xaridingiz uchun rahmat")}
-                  type="primary"
-                >
-                  Sotib olish
-                </Button>
+             
               </div>
             </li>
           ))}
